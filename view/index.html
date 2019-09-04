@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Game - Pedra Papel Tesoura Lagarto Spock</title>
+	<style type="text/css">
+		.content{
+			display: none;
+		}
+	</style>
+	<script type="text/javascript">
+		let userName = "";
+	</script>
+</head>
+<body>
+	
+	<div class="choiceUserName">
+		<h3>Digite abaixo seu nome de usuário:</h3>
+		<input id="userName" type="text" name="userName">
+		<button class="submit">Salvar!</button>
+	</div>
+
+	<div class="content">
+		<div class="botoes">
+			<button onclick="makeChoice(0);">Pedra</button>
+			<button onclick="makeChoice(1);">Papel</button>
+			<button onclick="makeChoice(2);">Tesoura</button>
+			<button onclick="makeChoice(3);">Largarto</button>
+			<button onclick="makeChoice(4);">Spock</button>
+		</div>
+	</div>
+
+	<script src="/socket.io/socket.io.js"></script>
+	<script type="text/javascript">
+		document.querySelector('.submit').addEventListener("click", function(){
+			userName = document.querySelector('#userName').value;
+			if(userName == ""){
+				alert("Digite um nome de usuário Válido!");
+				return false;
+			}
+			document.querySelector('.choiceUserName').style.display = "none";
+			document.querySelector('.content').style.display = "block";
+		});
+	</script>
+
+	<script type="text/javascript">
+		let socket = io();
+
+		socket.on('chat message', function(messageReturn){
+			console.log(messageReturn);
+		}); //Mensagem de retorno
+
+		function makeChoice(idMove){
+			socket.emit('chat message', {userName:userName, id:idMove});
+		}
+	</script>
+
+</body>
+</html>
