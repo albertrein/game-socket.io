@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Game - Pedra Papel Tesoura Lagarto Spock</title>
-	<script src="view/index.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 	<style type="text/css">
 		.content{
 			display: none;
@@ -24,16 +24,11 @@
 	</div>
 
 	<div class="content">
-		<div class="botoes">
-			<button onclick="makeChoice(0);">Pedra</button>
-			<button onclick="makeChoice(1);">Papel</button>
-			<button onclick="makeChoice(2);">Tesoura</button>
-			<button onclick="makeChoice(3);">Largarto</button>
-			<button onclick="makeChoice(4);">Spock</button>
-		</div>
+		<div id="app"></div>
 	</div>
 
 	<script src="/socket.io/socket.io.js"></script>
+	<script src="vue/Acoes.vue"></script>
 	<script type="text/javascript">
 		document.querySelector('.submit').addEventListener("click", function(){
 			userName = document.querySelector('#userName').value;
@@ -45,7 +40,6 @@
 			document.querySelector('.content').style.display = "block";
 		});
 	</script>
-
 	<script type="text/javascript">
 		let socket = io();
 
