@@ -1,12 +1,12 @@
 {
   "name": "webchat",
   "version": "0.1.0",
-  "description": "Webchat utilizando socketIo",
+  "description": "Game jokempo, com SocketIO.",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
   },
-  "author": "Gabriel Petry",
+  "author": "albertrein",
   "license": "MIT",
   "dependencies": {
     "express": "^4.16.4",
