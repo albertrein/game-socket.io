@@ -1,9 +1,12 @@
 // Realiza o require do express, http, e socketio
-var app = require('express')();
+var express = require('express');
+var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 //Cria jogo
 let game = require('./game');
+
+
 // cria uma rota para fornecer o arquivo index.html
 app.get('/', function(req, res){
   res.sendFile(__dirname + '/view/index.html');
@@ -21,6 +24,7 @@ io.on('connection', function(socket){
   });
 });
 
+app.use('/vue', express.static(__dirname + '/view/vue'));
 // inicia o servidor na porta informada
 http.listen(3000, function(){
   console.log('Servidor rodando em: http://localhost:3000');
