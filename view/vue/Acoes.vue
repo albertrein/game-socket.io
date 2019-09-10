@@ -36,7 +36,7 @@ new Vue({
 	},
 	methods: {
 		makeMove: function(evt){
-			console.log(evt);
+			makeChoice(evt);
 		}
 	},
 	template: '<ul><li v-for="option in options"><button v-on:click="makeMove(option.id)">{{option.label}}</button></li></ul>'
