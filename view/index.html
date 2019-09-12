@@ -40,8 +40,12 @@
 		}); //Mensagem de retorno
 
 		function makeChoice(idMove){
-			console.log({userName:started.userName, id:idMove});
-			socket.emit('chat message', {userName:started.userNameG, id:idMove});
+			//console.log({userName:started.userName, id:idMove});
+			
+			socket.emit('chat message', {
+				'id':idMove,
+				'userName':started.userName
+			});
 		}
 	</script>
 
